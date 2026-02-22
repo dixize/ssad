@@ -1,0 +1,65 @@
+:root { --accent: #ff4f12; --dark: #050608; }
+
+* { 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent; /* Убирает белую вспышку при клике */
+    outline: none !important;
+}
+
+body { 
+    margin: 0; background: var(--dark); color: #fff; 
+    font-family: 'Segoe UI', Roboto, sans-serif; overflow-x: hidden;
+}
+
+.container { padding: 0 20px; max-width: 1000px; margin: 0 auto; }
+
+/* Кнопка скролла */
+.scroll-btn {
+    background: transparent; border: 1px solid rgba(255,255,255,0.2);
+    color: #fff; padding: 12px 24px; border-radius: 50px; cursor: pointer;
+    margin: 20px 0; transition: 0.3s;
+}
+.scroll-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Карточки навигации */
+.nav-item { 
+    height: 180px; border-radius: 20px; margin-bottom: 15px;
+    background-size: cover; background-position: center;
+    background-color: #000; /* Подложка, чтобы не было белых зазоров */
+    position: relative; overflow: hidden; cursor: pointer;
+    transition: transform 0.2s;
+}
+.nav-item:active { transform: scale(0.97); }
+.nav-overlay { 
+    position: absolute; inset: 0; 
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); 
+}
+.nav-item h3 { position: absolute; bottom: 20px; left: 20px; margin: 0; font-size: 1.2rem; z-index: 2; }
+
+/* ФИКС МОДАЛКИ */
+.modal-overlay { 
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85); 
+    backdrop-filter: blur(10px); z-index: 9999; 
+    overflow-y: auto; /* Скролл разрешен здесь */
+    display: none;
+}
+.modal-overlay.active { display: block; }
+
+.modal-window { 
+    width: 100%; max-width: 600px; margin: 0 auto; 
+    padding: 100px 20px 50px; min-height: 100.1vh; /* Чтобы всегда был скролл */
+}
+
+.sticky-close { 
+    position: fixed; top: 20px; right: 20px; background: var(--accent); 
+    border: none; color: #fff; padding: 10px 20px; border-radius: 50px; 
+    font-weight: bold; cursor: pointer; z-index: 10000;
+}
+
+.info-block { 
+    background: rgba(255,255,255,0.05); padding: 20px; 
+    border-radius: 15px; margin-bottom: 15px; 
+    border-left: 3px solid var(--accent);
+}
+
+.hidden { display: none; }
